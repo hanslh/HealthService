@@ -54,7 +54,7 @@
 									color="info">
 									my_location
 								</v-icon>
-								<span class="my-subtitle">lat: {{ latitude }}, lng: {{ longitude }}</span>
+								<span class="my-subtitle">{{ latitude.toFixed(10) }}, {{ longitude.toFixed(10) }} [lat,lng]</span>
 							</v-flex>
 						</v-layout>
 				

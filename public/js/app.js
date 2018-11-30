@@ -33915,10 +33915,10 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("span", { staticClass: "my-subtitle" }, [
                                     _vm._v(
-                                      "lat: " +
-                                        _vm._s(_vm.latitude) +
-                                        ", lng: " +
-                                        _vm._s(_vm.longitude)
+                                      _vm._s(_vm.latitude.toFixed(10)) +
+                                        ", " +
+                                        _vm._s(_vm.longitude.toFixed(10)) +
+                                        " [lat,lng]"
                                     )
                                   ])
                                 ],
