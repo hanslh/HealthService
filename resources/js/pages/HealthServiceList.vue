@@ -1,15 +1,27 @@
 <template>
 	<div>
-	<v-container>
-		<v-layout class="my-3">
-			<v-flex xs12 text-xs-center>
-				<span class="display-2">Dine Nærmeste Helsetjenester</span>
-			</v-flex>
-		</v-layout>
-
-		<v-layout class="my-3">
-			<v-flex xs12 text-xs-center>
-				<span class="">Trykk på helsetjeneste for detaljert veibeskrivelse</span>
+	<v-container class="pa-0">
+		<v-layout 
+			justify-center 
+			:class="breakpoint.xsOnly ? null : 'mt-3'">
+			<v-flex xs12 lg8 text-xs-center>
+				<v-card>
+					<v-card-text>
+						<v-layout>
+							<v-flex>
+								<span 
+									:class="breakpoint.xsOnly ? 'display-1' : 'display-2'">
+									10 Nærmeste Helsetjenester
+								</span>
+							</v-flex>
+						</v-layout>
+						<v-layout>
+							<v-flex>
+								<span class="">Trykk på helsetjeneste for detaljert veibeskrivelse</span>
+							</v-flex>
+						</v-layout>	
+					</v-card-text>
+				</v-card>
 			</v-flex>
 		</v-layout>
 
@@ -24,7 +36,7 @@
 			</v-flex>
 		</v-layout>
 
-		<v-layout v-if="loadState === 1" class="my-3 mb-5">
+		<v-layout v-if="loadState === 1" class="mb-5">
 			<v-flex xs12 text-xs-center>
 				<span class="">Laster helsetjenester i nærheten...</span>
 			</v-flex>
@@ -40,7 +52,7 @@
 					            <v-list-tile @click="serviceSelected(index)">
 			
 					        	    <v-list-tile-avatar
-					        	    	v-if="!smallScreen"
+					        	    	v-if="!breakpoint.xsOnly"
 			                            class="mt-1"
 			                            :tile="true">
 					        	        <img src="redcross.png"/>
@@ -54,10 +66,6 @@
 					        	        	<v-icon color="">place</v-icon>
 					        	        	{{ service.geoAddress }}
 					        	        </v-list-tile-sub-title>
-					        	        <v-list-tile-sub-title class="">
-					        	        	<v-icon color="">phone</v-icon>
-					        	    		{{ service.Phone }}
-					        	        </v-list-tile-sub-title>
 					        	    </v-list-tile-content>
 					        	    
 					        	    <v-list-tile-action>
@@ -70,6 +78,12 @@
 					        	    		</v-icon>
 					        	    		{{ service.geoDuration.text }}
 					        	    	</v-list-tile-action-text>
+					        	    	<v-list-tile-action-text>
+					        	    		<v-icon color="">
+					        	    			phone
+					        	    		</v-icon>
+					        	    		{{ service.Phone }}
+					        	    	</v-list-tile-action-text>
 					        	    </v-list-tile-action>
 			
 					            </v-list-tile>
@@ -80,9 +94,9 @@
 					    </v-list>
 					    
 					    <v-list dense v-if="servicesLength" class="endofcontent">
-					    	 <v-list-tile>
-								<v-list-tile-content>
-									Siste Oppføring
+					    	 <v-list-tile text-xs-center>
+								<v-list-tile-content text-xs-center>
+									<span class="">Siste Oppføring</span>					
 								</v-list-tile-content>
 							</v-list-tile>
 					    </v-list>
@@ -112,7 +126,7 @@
 		</v-layout>
 
 		<v-layout justify-center>
-			<v-flex xs12 lg8 text-xs-center>
+			<v-flex xs12 lg8 class="mx-1">
 				<v-btn 
 					color="info"
 					large
@@ -167,24 +181,15 @@
 		computed:{
 			servicesLength(){
 				return this.services.length;
+			},
+			breakpoint(){
+				return this.$vuetify.breakpoint;
 			}
 		},
 		methods:{
 			serviceSelected(index){
-
 				this.selectedService = this.services[index];
 				this.showDirectionModal = true;
-
-				console.log(index);
-				/*
-				this.$router.push({
-					name: 'Directions',
-					params: {
-						latitude: this.latitude,
-						longitude: this.longitude
-					}
-				});
-				*/
 			},
 			getHealthServices(){
 				// Load health services from API
@@ -237,9 +242,8 @@
 			        		self.services[i].geoDuration = response.rows[0].elements[i].duration;
 			        	}
 
+			        	// All data is collected and the services can be sorted
 			        	self.sortServices();
-
-			        	console.log(self.services);
 
 			        }
 			    });
@@ -293,5 +297,8 @@
 </script>
 
 <style scoped>
-
+	.endofcontent {
+		display: flex;
+		justify-content: center;
+	}
 </style>

@@ -3,11 +3,11 @@
 		:show="true"
 	    title="Veibeskrivelse"
 	    @close="goBack">
-		<v-container class="ma-0 pa-0">
+		<v-container fluid class="pa-0">
 	
-			<v-layout class="">
+			<v-layout justify-center class="">
 				<v-flex xs12>
-					<div id="map" style="width: 100%; height: 600px; margin: 0 auto; background: gray;"></div>
+					<div id="map" :style="mapStyle"></div>
 				</v-flex>
 			</v-layout>
 
@@ -64,6 +64,17 @@
 		computed:{
 			breakpoint(){
 				return this.$vuetify.breakpoint;
+			},
+			mapStyle(){
+				var mapHeight;
+
+				if(this.breakpoint.xsOnly){
+					mapHeight = this.breakpoint.height - 56 - 85;
+				} else {
+					mapHeight = this.breakpoint.height - 64 - 59;
+				}
+
+				return "width: 100%; height: " + mapHeight + "px; margin: 0 auto; background: gray;";
 			}
 		},
 		methods:{
