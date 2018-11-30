@@ -34,13 +34,7 @@ export default new VueRouter({
 			path: '/healthservicelist?latitude=:latitude&longitude=:longitude',
 			name: 'HealthServiceList',
 			component: Vue.component( 'HealthServiceList', require('./pages/HealthServiceList.vue'))
-		},
-		{
-			path: '/directions?latitude=:latitude&longitude=:longitude',
-			name: 'Directions',
-			component: Vue.component( 'Direction', require('./pages/Directions.vue'))
-		},
-		
+		}
 	]
 
 });

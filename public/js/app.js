@@ -30776,10 +30776,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 		path: '/healthservicelist?latitude=:latitude&longitude=:longitude',
 		name: 'HealthServiceList',
 		component: __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('HealthServiceList', __webpack_require__(66))
-	}, {
-		path: '/directions?latitude=:latitude&longitude=:longitude',
-		name: 'Directions',
-		component: __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('Direction', __webpack_require__(76))
 	}]
 
 }));
@@ -33625,6 +33621,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -33714,6 +33711,7 @@ var render = function() {
             { attrs: { xs12: "" } },
             [
               _c("GoogleMap", {
+                attrs: { editMarker: true },
                 on: {
                   selected: _vm.getCoordinates,
                   addressLookup: _vm.getAddress
@@ -57009,7 +57007,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57026,6 +57024,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		editMarker: {
+			type: Boolean,
+			default: false
+		}
+	},
 	data: function data() {
 		return {
 			initialZoom: 10,
@@ -57056,13 +57060,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		mouseClick: {
 			handler: function handler(val) {
-				this.clearMarkers();
-				this.addMarker(this.mouseClick.latitude, this.mouseClick.longitude);
-				this.addressLookup(this.mouseClick.latitude, this.mouseClick.longitude);
-				this.$emit('selected', {
-					latitude: this.mouseClick.latitude,
-					longitude: this.mouseClick.longitude
-				});
+				if (this.editMarker) {
+					this.clearMarkers();
+					this.addMarker(this.mouseClick.latitude, this.mouseClick.longitude);
+					this.addressLookup(this.mouseClick.latitude, this.mouseClick.longitude);
+					this.$emit('selected', {
+						latitude: this.mouseClick.latitude,
+						longitude: this.mouseClick.longitude
+					});
+				}
 			},
 
 			deep: true
@@ -57260,7 +57266,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57391,6 +57397,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -57400,6 +57417,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	data: function data() {
 		return {
+			smallScreen: false,
 			loadState: 0,
 			// 0 Init
 			// 1 Loading started
@@ -57407,12 +57425,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			// 3 Loading error
 
 			services: [],
+			sortedServices: [],
 			length: 10,
 			latitude: 59.931,
 			longitude: 10.318,
 			emptyText: 'Listen er tom',
 			showDirections: false,
-			selectedService: null
+			selectedService: null,
+			distances: null
 		};
 	},
 
@@ -57441,7 +57461,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		getHealthServices: function getHealthServices() {
 			var _this = this;
 
-			// Load repositories from github API
+			// Load health services from API
 			this.loadState = 1;
 
 			axios.get('http://data.helsenorge.no/healthservices?$top=' + this.length + '&latitude=' + this.latitude + '&longitude=' + this.longitude).then(function (response) {
@@ -57449,15 +57469,85 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				// Loading successful
 				_this.loadState = 2;
 				_this.services = response.data;
+
+				_this.calculateDistances();
 			}).catch(function (error) {
 				// Loading error
 				_this.loadState = 3;
 				console.log(error);
 			});
 		},
-		calculateDistance: function calculateDistance() {}
+		calculateDistances: function calculateDistances() {
+			var self = this;
+
+			// Build destination coordinate array from collected services
+			var destinationArray = [];
+			for (var i = 0; i < this.services.length; i++) {
+				destinationArray.push({
+					lat: this.services[i].Latitude,
+					lng: this.services[i].Longitude
+				});
+			}
+
+			console.log(destinationArray);
+
+			// Calculate distances with a single origin and multiple destinations
+			this.$distanceService.getDistanceMatrix({
+				origins: [{ lat: self.latitude, lng: self.longitude }],
+				destinations: destinationArray,
+				travelMode: 'DRIVING',
+				unitSystem: google.maps.UnitSystem.METRIC,
+				avoidHighways: false,
+				avoidTolls: false
+			}, function (response, status) {
+				if (status !== 'OK') {
+					alert('Error was: ' + status);
+				} else {
+
+					console.log(response);
+
+					// Add calculated distances and resolved addresses to existing service array
+					for (var i = 0; i < self.services.length; i++) {
+						self.services[i].geoAddress = response.destinationAddresses[i];
+						self.services[i].geoDistance = response.rows[0].elements[i].distance;
+						self.services[i].geoDuration = response.rows[0].elements[i].duration;
+					}
+
+					self.sortedServices = self.services;
+
+					console.log(self.services);
+				}
+			});
+		},
+		sortArray: function sortArray() {},
+		addressLookup: function addressLookup(latitude, longitude) {
+			var self = this;
+
+			var latlng = {
+				lat: parseFloat(latitude),
+				lng: parseFloat(longitude)
+			};
+
+			this.$geocoder.geocode({ 'location': latlng }, function (results, status) {
+				// At least one good address is returned
+				if (status === 'OK') {
+					// Get best match
+					self.address = results[0];
+					self.$emit('addressLookup', self.address);
+				} else if (status === 'ZERO_RESULTS') {
+					// No matches found
+					self.address = null;
+				} else {
+					// Error
+					window.alert('Geocoder failed due to: ' + status);
+				}
+			});
+		}
 	},
 	created: function created() {
+		this.$distanceService = new google.maps.DistanceMatrixService();
+		this.$geocoder = new google.maps.Geocoder();
+
 		this.latitude = this.$route.params.latitude;
 		this.longitude = this.$route.params.longitude;
 
@@ -57554,7 +57644,7 @@ var render = function() {
                       staticClass: "ma-0 pa-0",
                       attrs: { dense: "", "three-line": "" }
                     },
-                    _vm._l(_vm.services, function(service, index) {
+                    _vm._l(_vm.sortedServices, function(service, index) {
                       return _c(
                         "div",
                         { key: service.OrganizationNumber },
@@ -57569,26 +57659,63 @@ var render = function() {
                               }
                             },
                             [
-                              _c(
-                                "v-list-tile-avatar",
-                                { staticClass: "mt-1", attrs: { tile: true } },
-                                [_c("img", { attrs: { src: "redcross.png" } })]
-                              ),
+                              !_vm.smallScreen
+                                ? _c(
+                                    "v-list-tile-avatar",
+                                    {
+                                      staticClass: "mt-1",
+                                      attrs: { tile: true }
+                                    },
+                                    [
+                                      _c("img", {
+                                        attrs: { src: "redcross.png" }
+                                      })
+                                    ]
+                                  )
+                                : _vm._e(),
                               _vm._v(" "),
                               _c(
                                 "v-list-tile-content",
                                 [
                                   _c("v-list-tile-title", {}, [
-                                    _vm._v(_vm._s(service.DisplayName))
+                                    _vm._v(
+                                      _vm._s(index + 1) +
+                                        ". " +
+                                        _vm._s(service.DisplayName)
+                                    )
                                   ]),
                                   _vm._v(" "),
-                                  _c("v-list-tile-sub-title", {}, [
-                                    _vm._v(_vm._s(service.CountyName))
-                                  ]),
+                                  _c(
+                                    "v-list-tile-sub-title",
+                                    {},
+                                    [
+                                      _c("v-icon", { attrs: { color: "" } }, [
+                                        _vm._v("place")
+                                      ]),
+                                      _vm._v(
+                                        "\n\t\t        \t        \t" +
+                                          _vm._s(service.geoAddress) +
+                                          "\n\t\t        \t        "
+                                      )
+                                    ],
+                                    1
+                                  ),
                                   _vm._v(" "),
-                                  _c("v-list-tile-sub-title", {}, [
-                                    _vm._v(_vm._s(service.OpeningHours))
-                                  ])
+                                  _c(
+                                    "v-list-tile-sub-title",
+                                    {},
+                                    [
+                                      _c("v-icon", { attrs: { color: "" } }, [
+                                        _vm._v("phone")
+                                      ]),
+                                      _vm._v(
+                                        "\n\t\t        \t    \t\t" +
+                                          _vm._s(service.Phone) +
+                                          "\n\t\t        \t        "
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               ),
@@ -57596,17 +57723,30 @@ var render = function() {
                               _c(
                                 "v-list-tile-action",
                                 [
-                                  _c("v-icon", { attrs: { color: "" } }, [
+                                  _c("v-list-tile-action-text", [
                                     _vm._v(
-                                      "\n\t\t        \t    \t\tassignment\n\t\t        \t    \t"
+                                      "\n\t\t        \t    \t\t" +
+                                        _vm._s(service.geoDistance.text) +
+                                        "\n\t\t        \t    \t"
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _c("v-list-tile-action-text", [
-                                    _vm._v(
-                                      "\n\t\t        \t    \t\tTBD\n\t\t        \t    \t"
-                                    )
-                                  ])
+                                  _c(
+                                    "v-list-tile-action-text",
+                                    [
+                                      _c("v-icon", { attrs: { color: "" } }, [
+                                        _vm._v(
+                                          "\n\t\t        \t    \t\t\tdirections_car\n\t\t        \t    \t\t"
+                                        )
+                                      ]),
+                                      _vm._v(
+                                        "\n\t\t        \t    \t\t" +
+                                          _vm._s(service.geoDuration.text) +
+                                          "\n\t\t        \t    \t"
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               )
@@ -57733,6 +57873,11 @@ var render = function() {
             attrs: {
               origin: { latitude: _vm.latitude, longitude: _vm.longitude },
               service: _vm.selectedService
+            },
+            on: {
+              close: function($event) {
+                _vm.showDirections = false
+              }
             }
           })
         : _vm._e()
@@ -58012,7 +58157,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58027,12 +58172,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Modal_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_GoogleMap_vue__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_GoogleMap_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_GoogleMap_vue__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -58086,13 +58225,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 
-	watch: {
-		service: {
-			handler: function handler(val) {},
-
-			deep: true
-		}
-	},
 	methods: {
 		getCoordinates: function getCoordinates() {},
 		getAddress: function getAddress() {},
@@ -58114,7 +58246,7 @@ var render = function() {
   return _c(
     "Modal",
     {
-      attrs: { show: _vm.showModal, title: "Veibeksrivelse" },
+      attrs: { show: true, title: "Veibeskrivelse" },
       on: { close: _vm.goBack }
     },
     [
@@ -58143,6 +58275,7 @@ var render = function() {
                 { attrs: { xs12: "" } },
                 [
                   _c("GoogleMap", {
+                    attrs: { editMarker: false },
                     on: {
                       selected: _vm.getCoordinates,
                       addressLookup: _vm.getAddress
@@ -58154,24 +58287,7 @@ var render = function() {
             ],
             1
           ),
-          _vm._v(" "),
-          _c(
-            "v-layout",
-            { staticClass: "my-3" },
-            [
-              _c(
-                "v-flex",
-                { attrs: { xs12: "" } },
-                [
-                  _c("v-btn", { attrs: { color: "info", large: "" } }, [
-                    _vm._v("text")
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          )
+          _vm._v("\n\n\t\t" + _vm._s(_vm.service.Name) + "\n\n\t")
         ],
         1
       )

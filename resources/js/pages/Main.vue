@@ -15,6 +15,7 @@
 		<v-layout class="my-3">
 			<v-flex xs12>
 				<GoogleMap
+					:editMarker="true"
 					@selected="getCoordinates"
 					@addressLookup="getAddress">
 				</GoogleMap>

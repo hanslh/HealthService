@@ -1,7 +1,7 @@
 <template>
 	<Modal
-		:show="showModal"
-	    title="Veibeksrivelse"
+		:show="true"
+	    title="Veibeskrivelse"
 	    @close="goBack">
 		<v-container class="mt-5">
 			<v-layout>
@@ -13,20 +13,14 @@
 			<v-layout class="my-3">
 				<v-flex xs12>
 					<GoogleMap
+						:editMarker="false"
 						@selected="getCoordinates"
 						@addressLookup="getAddress">
 					</GoogleMap>
 				</v-flex>
 			</v-layout>
-	
-			<v-layout class="my-3">
-				<v-flex xs12>
-					<v-btn 
-						color="info"
-						large
-						>text</v-btn>
-				</v-flex>
-			</v-layout>
+
+			{{ service.Name }}
 	
 		</v-container>
 	</Modal>
@@ -54,14 +48,6 @@
 		data(){
 			return{
 				showModal: true
-			}
-		},
-		watch:{
-			service:{
-				handler(val){
-
-				},
-				deep: true
 			}
 		},
 		methods:{

@@ -4,6 +4,12 @@
 
 <script>
 	export default{
+		props:{
+			editMarker:{
+				type: Boolean,
+				default: false
+			}
+		},
 		data(){
 			return{
 				initialZoom: 10,
@@ -32,13 +38,16 @@
 			},
 			mouseClick:{
 				handler(val){
-					this.clearMarkers();
-					this.addMarker(this.mouseClick.latitude,this.mouseClick.longitude);
-					this.addressLookup(this.mouseClick.latitude,this.mouseClick.longitude);
-					this.$emit('selected', { 
-						latitude: this.mouseClick.latitude,
-						longitude: this.mouseClick.longitude
-					});
+					if(this.editMarker){
+						this.clearMarkers();
+						this.addMarker(this.mouseClick.latitude,this.mouseClick.longitude);
+						this.addressLookup(this.mouseClick.latitude,this.mouseClick.longitude);
+						this.$emit('selected', { 
+							latitude: this.mouseClick.latitude,
+							longitude: this.mouseClick.longitude
+						});
+					}
+					
 				},
 				deep: true
 			}
