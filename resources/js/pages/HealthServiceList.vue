@@ -195,7 +195,11 @@
 				// Load health services from API
 				this.loadState = 1;
 
-				axios.get('http://data.helsenorge.no/healthservices?$top=' + this.length + '&latitude=' + this.latitude + '&longitude=' + this.longitude)
+				// Hack to prevent CORS policy issues
+				const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+				const apiUrl = "http://data.helsenorge.no/healthservices?$top="
+
+				axios.get(proxyUrl + apiUrl + this.length + '&latitude=' + this.latitude + '&longitude=' + this.longitude)
 					.then(response => {
 						// Loading successful
 						this.services = response.data;							

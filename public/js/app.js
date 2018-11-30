@@ -57568,7 +57568,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			// Load health services from API
 			this.loadState = 1;
 
-			axios.get('http://data.helsenorge.no/healthservices?$top=' + this.length + '&latitude=' + this.latitude + '&longitude=' + this.longitude).then(function (response) {
+			// Hack to prevent CORS policy issues
+			var proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			var apiUrl = "http://data.helsenorge.no/healthservices?$top=";
+
+			axios.get(proxyUrl + apiUrl + this.length + '&latitude=' + this.latitude + '&longitude=' + this.longitude).then(function (response) {
 				// Loading successful
 				_this.services = response.data;
 				// Calculate travel distances
