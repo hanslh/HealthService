@@ -33491,7 +33491,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n.my-title[data-v-7ad1a77c]{\n\tfont-size: 1.5em;\n\tfont-weight: 500;\n}\n.my-subtitle[data-v-7ad1a77c]{\n\tfont-size: 1.0em;\n\tfont-weight: 400;\n}\n.my-content-sm[data-v-7ad1a77c]{\n\tfont-size: 0.8em;\n\tfont-weight: 400;\n}\n", ""]);
+exports.push([module.i, "\n.my-title[data-v-7ad1a77c]{\n\tfont-size: 1.5em;\n\tfont-weight: 500;\n}\n.my-subtitle[data-v-7ad1a77c]{\n\tfont-size: 1.0em;\n\tfont-weight: 400;\n}\n.my-content-sm[data-v-7ad1a77c]{\n\tfont-size: 0.8em;\n\tfont-weight: 400;\n}\n#map[data-v-7ad1a77c] :hover{\n\tcursor: pointer\n}\n", ""]);
 
 // exports
 
@@ -33535,8 +33535,6 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_GoogleMap_vue__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_GoogleMap_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_GoogleMap_vue__);
 //
 //
 //
@@ -33621,12 +33619,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-
+//import GoogleMap from '../components/GoogleMap.vue';
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	components: {
-		GoogleMap: __WEBPACK_IMPORTED_MODULE_0__components_GoogleMap_vue___default.a
-	},
 	data: function data() {
 		return {
 			initialZoom: 10,

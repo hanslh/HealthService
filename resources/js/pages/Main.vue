@@ -82,12 +82,9 @@
 </template>
 
 <script>
-	import GoogleMap from '../components/GoogleMap.vue';
+	//import GoogleMap from '../components/GoogleMap.vue';
 
 	export default{
-		components:{
-			GoogleMap
-		},
 		data(){
 			return{
 				initialZoom: 10,
@@ -244,5 +241,8 @@
 	.my-content-sm{
 		font-size: 0.8em;
 		font-weight: 400;
+	}
+	#map :hover{
+		cursor: pointer
 	}
 </style>
