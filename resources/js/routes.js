@@ -31,7 +31,7 @@ export default new VueRouter({
 			component: Vue.component( 'Main', require('./pages/Main.vue'))
 		},
 		{
-			path: '/healthservicelist?latitude=:latitude&longitude=:longitude',
+			path: '/healthservicelist/latitude/:latitude/longitude/:longitude',
 			name: 'HealthServiceList',
 			component: Vue.component( 'HealthServiceList', require('./pages/HealthServiceList.vue'))
 		}

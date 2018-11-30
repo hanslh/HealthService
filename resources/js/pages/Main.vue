@@ -82,8 +82,6 @@
 </template>
 
 <script>
-	//import GoogleMap from '../components/GoogleMap.vue';
-
 	export default{
 		data(){
 			return{
@@ -126,6 +124,7 @@
 				return this.$vuetify.breakpoint;
 			},
 			mapStyle(){
+				// Set height of map so total content always fill screen
 				var toolbarHeigth;
 				var topCardHeight;
 				var bottomCardHeight;
@@ -146,19 +145,6 @@
 			}
 		},
 		methods:{
-			getCoordinates(coordinates){
-				this.positionSet = true;
-
-				this.latitude = coordinates.latitude;
-				this.longitude = coordinates.longitude;
-			},
-			getAddress(address){
-				if(address){
-					this.address = address;
-				} else {
-					this.address.formatted_address = 'Ingen adresse funnet på disse koordinatene';
-				}
-			},
 			addMarker(latitude, longitude){
 				var marker = new google.maps.Marker({
      				position: { 
@@ -168,7 +154,7 @@
      				map: this.$map
     			});
 
-				// Collect all placed markers in an array.
+				// Collect all placed markers in an array. Required for clearMarkers function
     			this.markerArray.push(marker);
 			},
 			clearMarkers(){
@@ -176,6 +162,7 @@
     				this.markerArray[i].setMap( null );
   				}
 			},
+			// Get address from latitude and longitude coordinates
 			addressLookup(latitude, longitude){
 				var self = this;
 			
@@ -192,7 +179,7 @@
 	    	            self.$emit('addressLookup', self.address);
 	                } else if(status === 'ZERO_RESULTS'){
 	                	// No matches found
-	                	self.address = null;
+	                	self.address = 'Ingen adresse funnet på disse koordinatene';
 	                } else {
 	                	// Error
 	                	window.alert('Geocoder failed due to: ' + status);
@@ -217,13 +204,8 @@
                  self.mouseClick.latitude = event.latLng.lat();
                  self.mouseClick.longitude = event.latLng.lng();
              });
-
-             google.maps.event.addListener(this.$map,'mousemove',function(event) {
-                 self.mousePosition.latitude = event.latLng.lat();
-                 self.mousePosition.longitude = event.latLng.lng();
-             });
 	
-			
+			// Create geoCoder object for address lookup
 	      	this.$geocoder = new google.maps.Geocoder;
 		}
 	}

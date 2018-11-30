@@ -39,11 +39,9 @@
 
 <script>
 	import Modal from '../components/Modal.vue';
-	import GoogleMap from '../components/GoogleMap.vue';
 
 	export default{
 		components:{
-			GoogleMap,
 			Modal
 		},
 		props:{
@@ -54,11 +52,6 @@
 			service:{
 				type: Object,
 				default: {}
-			}
-		},
-		data(){
-			return{
-
 			}
 		},
 		computed:{
@@ -94,10 +87,12 @@
         		});
       		},
 			goBack(){
+				// Close modal
 				this.$emit('close');
 			}
 		},
 		mounted(){
+			// Required for plotting route
 			this.$directionsService = new google.maps.DirectionsService;
 			this.$directionsDisplay = new google.maps.DirectionsRenderer;
 

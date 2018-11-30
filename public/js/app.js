@@ -30773,7 +30773,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 		name: 'Main',
 		component: __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('Main', __webpack_require__(40))
 	}, {
-		path: '/healthservicelist?latitude=:latitude&longitude=:longitude',
+		path: '/healthservicelist/latitude/:latitude/longitude/:longitude',
 		name: 'HealthServiceList',
 		component: __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('HealthServiceList', __webpack_require__(66))
 	}]
@@ -33619,8 +33619,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-//import GoogleMap from '../components/GoogleMap.vue';
-
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
@@ -33665,6 +33663,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return this.$vuetify.breakpoint;
 		},
 		mapStyle: function mapStyle() {
+			// Set height of map so total content always fill screen
 			var toolbarHeigth;
 			var topCardHeight;
 			var bottomCardHeight;
@@ -33685,19 +33684,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	methods: {
-		getCoordinates: function getCoordinates(coordinates) {
-			this.positionSet = true;
-
-			this.latitude = coordinates.latitude;
-			this.longitude = coordinates.longitude;
-		},
-		getAddress: function getAddress(address) {
-			if (address) {
-				this.address = address;
-			} else {
-				this.address.formatted_address = 'Ingen adresse funnet på disse koordinatene';
-			}
-		},
 		addMarker: function addMarker(latitude, longitude) {
 			var marker = new google.maps.Marker({
 				position: {
@@ -33707,7 +33693,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				map: this.$map
 			});
 
-			// Collect all placed markers in an array.
+			// Collect all placed markers in an array. Required for clearMarkers function
 			this.markerArray.push(marker);
 		},
 		clearMarkers: function clearMarkers() {
@@ -33715,6 +33701,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				this.markerArray[i].setMap(null);
 			}
 		},
+
+		// Get address from latitude and longitude coordinates
 		addressLookup: function addressLookup(latitude, longitude) {
 			var self = this;
 
@@ -33731,7 +33719,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					self.$emit('addressLookup', self.address);
 				} else if (status === 'ZERO_RESULTS') {
 					// No matches found
-					self.address = null;
+					self.address = 'Ingen adresse funnet på disse koordinatene';
 				} else {
 					// Error
 					window.alert('Geocoder failed due to: ' + status);
@@ -33757,11 +33745,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			self.mouseClick.longitude = event.latLng.lng();
 		});
 
-		google.maps.event.addListener(this.$map, 'mousemove', function (event) {
-			self.mousePosition.latitude = event.latLng.lat();
-			self.mousePosition.longitude = event.latLng.lng();
-		});
-
+		// Create geoCoder object for address lookup
 		this.$geocoder = new google.maps.Geocoder();
 	}
 });
@@ -57015,256 +56999,11 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
 /* 53 */,
 /* 54 */,
 /* 55 */,
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(57)
-}
-var normalizeComponent = __webpack_require__(12)
-/* script */
-var __vue_script__ = __webpack_require__(59)
-/* template */
-var __vue_template__ = __webpack_require__(60)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-70fcb908"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/GoogleMap.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-70fcb908", Component.options)
-  } else {
-    hotAPI.reload("data-v-70fcb908", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(58);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(11)("10a08271", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-70fcb908\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GoogleMap.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-70fcb908\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GoogleMap.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(10)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n#map[data-v-70fcb908] :hover{\n\tcursor: pointer\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 59 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	props: {
-		editMarker: {
-			type: Boolean,
-			default: false
-		}
-	},
-	data: function data() {
-		return {
-			initialZoom: 10,
-			centerCoordinates: {
-				latitude: 63.42868975991935,
-				longitude: 10.400892054389715
-			},
-			mousePosition: {
-				latitude: 0,
-				longitude: 0
-			},
-			mouseClick: {
-				latitude: 0,
-				longitude: 0
-			},
-			markerArray: [],
-			address: null
-		};
-	},
-
-	watch: {
-		mousePosition: {
-			handler: function handler(val) {
-				//console.log(this.mousePosition.latitude + ', ' + this.mousePosition.longitude);
-			},
-
-			deep: true
-		},
-		mouseClick: {
-			handler: function handler(val) {
-				if (this.editMarker) {
-					this.clearMarkers();
-					this.addMarker(this.mouseClick.latitude, this.mouseClick.longitude);
-					this.addressLookup(this.mouseClick.latitude, this.mouseClick.longitude);
-					this.$emit('selected', {
-						latitude: this.mouseClick.latitude,
-						longitude: this.mouseClick.longitude
-					});
-				}
-			},
-
-			deep: true
-		}
-	},
-	methods: {
-		addMarker: function addMarker(latitude, longitude) {
-			var marker = new google.maps.Marker({
-				position: {
-					lat: parseFloat(latitude),
-					lng: parseFloat(longitude)
-				},
-				map: this.$map
-			});
-
-			// Collect all placed markers in an array.
-			this.markerArray.push(marker);
-		},
-		clearMarkers: function clearMarkers() {
-			for (var i = 0; i < this.markerArray.length; i++) {
-				this.markerArray[i].setMap(null);
-			}
-		},
-		addressLookup: function addressLookup(latitude, longitude) {
-			var self = this;
-
-			var latlng = {
-				lat: parseFloat(latitude),
-				lng: parseFloat(longitude)
-			};
-
-			this.$geocoder.geocode({ 'location': latlng }, function (results, status) {
-				// At least one good address is returned
-				if (status === 'OK') {
-					// Get best match
-					self.address = results[0];
-					self.$emit('addressLookup', self.address);
-				} else if (status === 'ZERO_RESULTS') {
-					// No matches found
-					self.address = null;
-				} else {
-					// Error
-					window.alert('Geocoder failed due to: ' + status);
-				}
-			});
-		}
-	},
-	mounted: function mounted() {
-		var self = this;
-
-		// Create map object
-		this.$map = new google.maps.Map(document.getElementById('map'), {
-			center: {
-				lat: this.centerCoordinates.latitude,
-				lng: this.centerCoordinates.longitude
-			},
-			zoom: this.initialZoom
-		});
-
-		// Add eventlisteners for mouse click and movement
-		google.maps.event.addListener(this.$map, 'click', function (event) {
-			self.mouseClick.latitude = event.latLng.lat();
-			self.mouseClick.longitude = event.latLng.lng();
-		});
-
-		google.maps.event.addListener(this.$map, 'mousemove', function (event) {
-			self.mousePosition.latitude = event.latLng.lat();
-			self.mousePosition.longitude = event.latLng.lng();
-		});
-
-		this.$geocoder = new google.maps.Geocoder();
-	}
-});
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", {
-    staticStyle: {
-      width: "100%",
-      height: "600px",
-      margin: "0 auto",
-      background: "gray"
-    },
-    attrs: { id: "map" }
-  })
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-70fcb908", module.exports)
-  }
-}
-
-/***/ }),
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
 /* 61 */,
 /* 62 */,
 /* 63 */,
@@ -57521,6 +57260,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -57530,29 +57271,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	data: function data() {
 		return {
-			smallScreen: false,
 			loadState: 0,
 			// 0 Init
 			// 1 Loading started
 			// 2 Loading successful
 			// 3 Loading error
 
+			pulledServices: 10,
 			services: [],
-			sortedServices: [],
-			length: 10,
-			latitude: 59.931,
-			longitude: 10.318,
-			emptyText: 'Listen er tom',
-			showDirectionModal: false,
+			originLatitude: 0,
+			originLongitude: 0,
+
 			selectedService: null,
-			distances: null
+			showDirectionModal: false
 		};
 	},
 
 	computed: {
-		servicesLength: function servicesLength() {
-			return this.services.length;
-		},
 		breakpoint: function breakpoint() {
 			return this.$vuetify.breakpoint;
 		}
@@ -57572,7 +57307,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var proxyUrl = "https://cors-anywhere.herokuapp.com/";
 			var apiUrl = "http://data.helsenorge.no/healthservices?$top=";
 
-			axios.get(proxyUrl + apiUrl + this.length + '&latitude=' + this.latitude + '&longitude=' + this.longitude).then(function (response) {
+			axios.get(proxyUrl + apiUrl + this.pulledServices + '&latitude=' + this.originLatitude + '&longitude=' + this.originLongitude).then(function (response) {
 				// Loading successful
 				_this.services = response.data;
 				// Calculate travel distances
@@ -57597,7 +57332,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			// Calculate distances with a single origin and multiple destinations
 			this.$distanceService.getDistanceMatrix({
-				origins: [{ lat: self.latitude, lng: self.longitude }],
+				origins: [{ lat: self.originLatitude, lng: self.originLongitude }],
 				destinations: destinationArray,
 				travelMode: 'DRIVING',
 				unitSystem: google.maps.UnitSystem.METRIC,
@@ -57621,44 +57356,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			});
 		},
 		sortServices: function sortServices() {
-			// Sort by duration
+			// Sort by duration (shortest duration first)
 			this.services.sort(function (a, b) {
 				return a.geoDuration.value === b.geoDuration.value ? 0 : a.geoDuration.value > b.geoDuration.value ? 1 : -1;
 			});
 
 			// End of promise chain. Set loading OK
 			this.loadState = 2;
-		},
-		addressLookup: function addressLookup(latitude, longitude) {
-			var self = this;
-
-			var latlng = {
-				lat: parseFloat(latitude),
-				lng: parseFloat(longitude)
-			};
-
-			this.$geocoder.geocode({ 'location': latlng }, function (results, status) {
-				// At least one good address is returned
-				if (status === 'OK') {
-					// Get best match
-					self.address = results[0];
-					self.$emit('addressLookup', self.address);
-				} else if (status === 'ZERO_RESULTS') {
-					// No matches found
-					self.address = null;
-				} else {
-					// Error
-					window.alert('Geocoder failed due to: ' + status);
-				}
-			});
 		}
 	},
 	created: function created() {
 		this.$distanceService = new google.maps.DistanceMatrixService();
 		this.$geocoder = new google.maps.Geocoder();
 
-		this.latitude = this.$route.params.latitude;
-		this.longitude = this.$route.params.longitude;
+		this.originLatitude = parseFloat(this.$route.params.latitude);
+		this.originLongitude = parseFloat(this.$route.params.longitude);
 
 		this.getHealthServices();
 	}
@@ -57724,7 +57436,7 @@ var render = function() {
                               _c("v-flex", [
                                 _c("span", {}, [
                                   _vm._v(
-                                    "Trykk på helsetjeneste for detaljert veibeskrivelse"
+                                    "Trykk på helsetjeneste for veibeskrivelse"
                                   )
                                 ])
                               ])
@@ -57775,9 +57487,7 @@ var render = function() {
                 { staticClass: "mb-5" },
                 [
                   _c("v-flex", { attrs: { xs12: "", "text-xs-center": "" } }, [
-                    _c("span", {}, [
-                      _vm._v("Laster helsetjenester i nærheten...")
-                    ])
+                    _c("span", {}, [_vm._v("Laster helsetjenester...")])
                   ])
                 ],
                 1
@@ -57857,25 +57567,13 @@ var render = function() {
                                                 ]
                                               ),
                                               _vm._v(" "),
-                                              _c(
-                                                "v-list-tile-sub-title",
-                                                {},
-                                                [
-                                                  _c(
-                                                    "v-icon",
-                                                    { attrs: { color: "" } },
-                                                    [_vm._v("place")]
-                                                  ),
-                                                  _vm._v(
-                                                    "\n\t\t\t\t        \t        \t" +
-                                                      _vm._s(
-                                                        service.geoAddress
-                                                      ) +
-                                                      "\n\t\t\t\t        \t        "
-                                                  )
-                                                ],
-                                                1
-                                              )
+                                              _c("v-list-tile-sub-title", {}, [
+                                                _vm._v(
+                                                  "\n\t\t\t\t        \t        \t\n\t\t\t\t        \t        \t" +
+                                                    _vm._s(service.geoAddress) +
+                                                    "\n\t\t\t\t        \t        "
+                                                )
+                                              ])
                                             ],
                                             1
                                           ),
@@ -57943,14 +57641,16 @@ var render = function() {
                                         1
                                       ),
                                       _vm._v(" "),
-                                      _c("v-divider", { attrs: { inset: "" } })
+                                      _c("v-divider", {
+                                        attrs: { inset: !_vm.breakpoint.xsOnly }
+                                      })
                                     ],
                                     1
                                   )
                                 })
                               ),
                               _vm._v(" "),
-                              _vm.servicesLength
+                              _vm.services.length
                                 ? _c(
                                     "v-list",
                                     {
@@ -57979,7 +57679,7 @@ var render = function() {
                                   )
                                 : _vm._e(),
                               _vm._v(" "),
-                              !_vm.servicesLength
+                              !_vm.services.length
                                 ? _c(
                                     "v-list",
                                     { staticClass: "endofcontent" },
@@ -57989,9 +57689,7 @@ var render = function() {
                                         [
                                           _c("v-list-tile-content", [
                                             _vm._v(
-                                              "\n\t\t\t\t\t\t\t\t" +
-                                                _vm._s(_vm.emptyText) +
-                                                "\n\t\t\t\t\t\t\t"
+                                              "\n\t\t\t\t\t\t\t\tListen er tom\n\t\t\t\t\t\t\t"
                                             )
                                           ])
                                         ],
@@ -58078,7 +57776,10 @@ var render = function() {
       _vm.showDirectionModal
         ? _c("Directions", {
             attrs: {
-              origin: { latitude: _vm.latitude, longitude: _vm.longitude },
+              origin: {
+                latitude: _vm.originLatitude,
+                longitude: _vm.originLongitude
+              },
               service: _vm.selectedService
             },
             on: {
@@ -58377,8 +58078,6 @@ exports.push([module.i, "\n.my-subtitle[data-v-569e311d]{\n\tfont-size: 1.2em;\n
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Modal_vue__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Modal_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_GoogleMap_vue__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_GoogleMap_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_GoogleMap_vue__);
 //
 //
 //
@@ -58418,13 +58117,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	components: {
-		GoogleMap: __WEBPACK_IMPORTED_MODULE_1__components_GoogleMap_vue___default.a,
 		Modal: __WEBPACK_IMPORTED_MODULE_0__components_Modal_vue___default.a
 	},
 	props: {
@@ -58437,10 +58134,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			default: {}
 		}
 	},
-	data: function data() {
-		return {};
-	},
-
 	computed: {
 		breakpoint: function breakpoint() {
 			return this.$vuetify.breakpoint;
@@ -58474,10 +58167,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			});
 		},
 		goBack: function goBack() {
+			// Close modal
 			this.$emit('close');
 		}
 	},
 	mounted: function mounted() {
+		// Required for plotting route
 		this.$directionsService = new google.maps.DirectionsService();
 		this.$directionsDisplay = new google.maps.DirectionsRenderer();
 

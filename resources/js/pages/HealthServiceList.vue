@@ -17,7 +17,7 @@
 						</v-layout>
 						<v-layout>
 							<v-flex>
-								<span class="">Trykk på helsetjeneste for detaljert veibeskrivelse</span>
+								<span class="">Trykk på helsetjeneste for veibeskrivelse</span>
 							</v-flex>
 						</v-layout>	
 					</v-card-text>
@@ -38,7 +38,7 @@
 
 		<v-layout v-if="loadState === 1" class="mb-5">
 			<v-flex xs12 text-xs-center>
-				<span class="">Laster helsetjenester i nærheten...</span>
+				<span class="">Laster helsetjenester...</span>
 			</v-flex>
 		</v-layout>
 		
@@ -63,7 +63,7 @@
 					        	        	{{index + 1}}. {{ service.DisplayName }}
 					        	        </v-list-tile-title>
 					        	        <v-list-tile-sub-title class="">
-					        	        	<v-icon color="">place</v-icon>
+					        	        	
 					        	        	{{ service.geoAddress }}
 					        	        </v-list-tile-sub-title>
 					        	    </v-list-tile-content>
@@ -88,12 +88,14 @@
 			
 					            </v-list-tile>
 			
-					            <v-divider inset></v-divider>
+					            <v-divider
+					            	:inset="!breakpoint.xsOnly">
+					            </v-divider>
 			
 					        </div>
 					    </v-list>
 					    
-					    <v-list dense v-if="servicesLength" class="endofcontent">
+					    <v-list dense v-if="services.length" class="endofcontent">
 					    	 <v-list-tile text-xs-center>
 								<v-list-tile-content text-xs-center>
 									<span class="">Siste Oppføring</span>					
@@ -101,10 +103,10 @@
 							</v-list-tile>
 					    </v-list>
 			
-					    <v-list v-if="!servicesLength" class="endofcontent">
+					    <v-list v-if="!services.length" class="endofcontent">
 					    	 <v-list-tile>
 								<v-list-tile-content>
-									{{ emptyText }}
+									Listen er tom
 								</v-list-tile-content>
 							</v-list-tile>
 					    </v-list>
@@ -142,7 +144,7 @@
 
 	<Directions
 		v-if="showDirectionModal"
-		:origin="{ latitude: latitude, longitude: longitude }"
+		:origin="{ latitude: originLatitude, longitude: originLongitude }"
 		:service="selectedService"
 		@close="showDirectionModal = false">
 	</Directions>
@@ -160,28 +162,22 @@
 		},
 		data(){
 			return{
-				smallScreen: false,
 				loadState: 0,
 				// 0 Init
 				// 1 Loading started
 				// 2 Loading successful
 				// 3 Loading error
 
+				pulledServices: 10,
 				services: [],
-				sortedServices: [],
-				length: 10,
-				latitude: 59.931,
-				longitude: 10.318,
-				emptyText: 'Listen er tom',
-				showDirectionModal: false,
+				originLatitude: 0,
+				originLongitude: 0,
+				
 				selectedService: null,
-				distances: null
+				showDirectionModal: false
 			}
 		},
 		computed:{
-			servicesLength(){
-				return this.services.length;
-			},
 			breakpoint(){
 				return this.$vuetify.breakpoint;
 			}
@@ -199,7 +195,7 @@
 				const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 				const apiUrl = "http://data.helsenorge.no/healthservices?$top="
 
-				axios.get(proxyUrl + apiUrl + this.length + '&latitude=' + this.latitude + '&longitude=' + this.longitude)
+				axios.get(proxyUrl + apiUrl + this.pulledServices + '&latitude=' + this.originLatitude + '&longitude=' + this.originLongitude)
 					.then(response => {
 						// Loading successful
 						this.services = response.data;							
@@ -227,7 +223,7 @@
 
 				// Calculate distances with a single origin and multiple destinations
 		    	this.$distanceService.getDistanceMatrix({
-	        		origins: [{lat: self.latitude, lng: self.longitude}],
+	        		origins: [{lat: self.originLatitude, lng: self.originLongitude}],
 	        		destinations: destinationArray,
 	        		travelMode: 'DRIVING',
 	        		unitSystem: google.maps.UnitSystem.METRIC,
@@ -253,7 +249,7 @@
 			    });
 			},
 			sortServices(){
-				// Sort by duration
+				// Sort by duration (shortest duration first)
 				this.services.sort( function(a, b){
 					return ( 
 						( a.geoDuration.value === b.geoDuration.value) ? 0 : 
@@ -263,37 +259,14 @@
 
 				// End of promise chain. Set loading OK
 				this.loadState = 2;
-			},
-			addressLookup(latitude, longitude){
-				var self = this;
-			
-				var latlng = {
-					lat: parseFloat(latitude), 
-					lng: parseFloat(longitude)
-				};
-	
-	            this.$geocoder.geocode({'location': latlng }, function(results, status){
-	                // At least one good address is returned
-	                if (status === 'OK') {
-	    	            // Get best match
-	    	            self.address = results[0];
-	    	            self.$emit('addressLookup', self.address);
-	                } else if(status === 'ZERO_RESULTS'){
-	                	// No matches found
-	                	self.address = null;
-	                } else {
-	                	// Error
-	                	window.alert('Geocoder failed due to: ' + status);
-	                }
-	            });
 			}
 		},
 		created(){
 			this.$distanceService = new google.maps.DistanceMatrixService;
 			this.$geocoder = new google.maps.Geocoder;
 
-			this.latitude = this.$route.params.latitude;
-			this.longitude = this.$route.params.longitude;
+			this.originLatitude = parseFloat(this.$route.params.latitude);
+			this.originLongitude = parseFloat(this.$route.params.longitude);
 
 			this.getHealthServices();
 		}
