@@ -33704,11 +33704,11 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-layout",
-        { staticClass: "my-3" },
+        { staticClass: "my-3", attrs: { "justify-center": "" } },
         [
           _c(
             "v-flex",
-            { attrs: { xs12: "" } },
+            { attrs: { xs12: "", lg8: "" } },
             [
               _c("GoogleMap", {
                 attrs: { editMarker: true },
@@ -33744,7 +33744,7 @@ var render = function() {
         [
           _c(
             "v-flex",
-            { attrs: { xs8: "" } },
+            { attrs: { xs12: "", lg8: "" } },
             [
               _vm.positionSet
                 ? _c(
@@ -57007,7 +57007,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n#map[data-v-70fcb908] :hover{\n\tcursor: pointer\n}\n", ""]);
 
 // exports
 
@@ -57139,11 +57139,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			self.mousePosition.longitude = event.latLng.lng();
 		});
 
-		this.$bounds = new google.maps.LatLngBounds();
-
 		this.$geocoder = new google.maps.Geocoder();
-
-		this.$distanceService = new google.maps.DistanceMatrixService();
 	}
 });
 
@@ -57157,7 +57153,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {
     staticStyle: {
-      width: "800px",
+      width: "100%",
       height: "600px",
       margin: "0 auto",
       background: "gray"
@@ -57266,7 +57262,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57279,6 +57275,16 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Directions_vue__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Directions_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Directions_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -57430,7 +57436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			latitude: 59.931,
 			longitude: 10.318,
 			emptyText: 'Listen er tom',
-			showDirections: false,
+			showDirectionModal: false,
 			selectedService: null,
 			distances: null
 		};
@@ -57445,7 +57451,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		serviceSelected: function serviceSelected(index) {
 
 			this.selectedService = this.services[index];
-			this.showDirections = true;
+			this.showDirectionModal = true;
 
 			console.log(index);
 			/*
@@ -57465,11 +57471,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.loadState = 1;
 
 			axios.get('http://data.helsenorge.no/healthservices?$top=' + this.length + '&latitude=' + this.latitude + '&longitude=' + this.longitude).then(function (response) {
-				console.log(response.data);
 				// Loading successful
-				_this.loadState = 2;
 				_this.services = response.data;
-
+				// Calculate travel distances
 				_this.calculateDistances();
 			}).catch(function (error) {
 				// Loading error
@@ -57489,8 +57493,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				});
 			}
 
-			console.log(destinationArray);
-
 			// Calculate distances with a single origin and multiple destinations
 			this.$distanceService.getDistanceMatrix({
 				origins: [{ lat: self.latitude, lng: self.longitude }],
@@ -57504,8 +57506,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					alert('Error was: ' + status);
 				} else {
 
-					console.log(response);
-
 					// Add calculated distances and resolved addresses to existing service array
 					for (var i = 0; i < self.services.length; i++) {
 						self.services[i].geoAddress = response.destinationAddresses[i];
@@ -57513,13 +57513,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						self.services[i].geoDuration = response.rows[0].elements[i].duration;
 					}
 
-					self.sortedServices = self.services;
+					self.sortServices();
 
 					console.log(self.services);
 				}
 			});
 		},
-		sortArray: function sortArray() {},
+		sortServices: function sortServices() {
+			// Sort by duration
+			this.services.sort(function (a, b) {
+				return a.geoDuration.value === b.geoDuration.value ? 0 : a.geoDuration.value > b.geoDuration.value ? 1 : -1;
+			});
+
+			// End of promise chain. Set loading OK
+			this.loadState = 2;
+		},
 		addressLookup: function addressLookup(latitude, longitude) {
 			var self = this;
 
@@ -57564,239 +57572,282 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
+    "div",
     [
       _c(
-        "v-layout",
-        { staticClass: "my-3" },
+        "v-container",
         [
-          _c("v-flex", { attrs: { xs12: "", "text-xs-center": "" } }, [
-            _c("span", { staticClass: "display-2" }, [
-              _vm._v("Helsetjenester i Nærheten")
-            ])
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-layout",
-        { staticClass: "my-3" },
-        [
-          _c("v-flex", { attrs: { xs12: "", "text-xs-center": "" } }, [
-            _c("span", {}, [
-              _vm._v("Velg helsetjeneste for detaljert veibeskrivelse")
-            ])
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm.loadState === 1
-        ? _c(
+          _c(
             "v-layout",
             { staticClass: "my-3" },
             [
-              _c(
-                "v-flex",
-                { attrs: { xs12: "", "text-xs-center": "" } },
-                [
-                  _c("v-progress-circular", {
-                    attrs: {
-                      indeterminate: "",
-                      size: 70,
-                      width: 7,
-                      color: "primary"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.loadState === 1
-        ? _c(
-            "v-layout",
-            { staticClass: "my-3 mb-5" },
-            [
               _c("v-flex", { attrs: { xs12: "", "text-xs-center": "" } }, [
-                _c("span", {}, [_vm._v("Laster helsetjenester i nærheten...")])
+                _c("span", { staticClass: "display-2" }, [
+                  _vm._v("Dine Nærmeste Helsetjenester")
+                ])
               ])
             ],
             1
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.loadState === 2
-        ? _c(
-            "v-card",
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { staticClass: "my-3" },
             [
-              _c(
-                "v-card-text",
-                { staticClass: "pa-0" },
+              _c("v-flex", { attrs: { xs12: "", "text-xs-center": "" } }, [
+                _c("span", {}, [
+                  _vm._v("Trykk på helsetjeneste for detaljert veibeskrivelse")
+                ])
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.loadState === 1
+            ? _c(
+                "v-layout",
+                { staticClass: "my-3" },
                 [
                   _c(
-                    "v-list",
-                    {
-                      staticClass: "ma-0 pa-0",
-                      attrs: { dense: "", "three-line": "" }
-                    },
-                    _vm._l(_vm.sortedServices, function(service, index) {
-                      return _c(
-                        "div",
-                        { key: service.OrganizationNumber },
+                    "v-flex",
+                    { attrs: { xs12: "", "text-xs-center": "" } },
+                    [
+                      _c("v-progress-circular", {
+                        attrs: {
+                          indeterminate: "",
+                          size: 70,
+                          width: 7,
+                          color: "primary"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.loadState === 1
+            ? _c(
+                "v-layout",
+                { staticClass: "my-3 mb-5" },
+                [
+                  _c("v-flex", { attrs: { xs12: "", "text-xs-center": "" } }, [
+                    _c("span", {}, [
+                      _vm._v("Laster helsetjenester i nærheten...")
+                    ])
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { "justify-center": "" } },
+            [
+              _c(
+                "v-flex",
+                { attrs: { xs12: "", lg8: "" } },
+                [
+                  _vm.loadState === 2
+                    ? _c(
+                        "v-card",
                         [
                           _c(
-                            "v-list-tile",
-                            {
-                              on: {
-                                click: function($event) {
-                                  _vm.serviceSelected(index)
-                                }
-                              }
-                            },
+                            "v-card-text",
+                            { staticClass: "pa-0" },
                             [
-                              !_vm.smallScreen
+                              _c(
+                                "v-list",
+                                {
+                                  staticClass: "ma-0 pa-0",
+                                  attrs: { dense: "", "three-line": "" }
+                                },
+                                _vm._l(_vm.services, function(service, index) {
+                                  return _c(
+                                    "div",
+                                    { key: service.OrganizationNumber },
+                                    [
+                                      _c(
+                                        "v-list-tile",
+                                        {
+                                          on: {
+                                            click: function($event) {
+                                              _vm.serviceSelected(index)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          !_vm.smallScreen
+                                            ? _c(
+                                                "v-list-tile-avatar",
+                                                {
+                                                  staticClass: "mt-1",
+                                                  attrs: { tile: true }
+                                                },
+                                                [
+                                                  _c("img", {
+                                                    attrs: {
+                                                      src: "redcross.png"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-tile-content",
+                                            [
+                                              _c("v-list-tile-title", {}, [
+                                                _vm._v(
+                                                  "\n\t\t\t\t        \t        \t" +
+                                                    _vm._s(index + 1) +
+                                                    ". " +
+                                                    _vm._s(
+                                                      service.DisplayName
+                                                    ) +
+                                                    "\n\t\t\t\t        \t        "
+                                                )
+                                              ]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-sub-title",
+                                                {},
+                                                [
+                                                  _c(
+                                                    "v-icon",
+                                                    { attrs: { color: "" } },
+                                                    [_vm._v("place")]
+                                                  ),
+                                                  _vm._v(
+                                                    "\n\t\t\t\t        \t        \t" +
+                                                      _vm._s(
+                                                        service.geoAddress
+                                                      ) +
+                                                      "\n\t\t\t\t        \t        "
+                                                  )
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-sub-title",
+                                                {},
+                                                [
+                                                  _c(
+                                                    "v-icon",
+                                                    { attrs: { color: "" } },
+                                                    [_vm._v("phone")]
+                                                  ),
+                                                  _vm._v(
+                                                    "\n\t\t\t\t        \t    \t\t" +
+                                                      _vm._s(service.Phone) +
+                                                      "\n\t\t\t\t        \t        "
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-tile-action",
+                                            [
+                                              _c("v-list-tile-action-text", [
+                                                _vm._v(
+                                                  "\n\t\t\t\t        \t    \t\t" +
+                                                    _vm._s(
+                                                      service.geoDistance.text
+                                                    ) +
+                                                    "\n\t\t\t\t        \t    \t"
+                                                )
+                                              ]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-list-tile-action-text",
+                                                [
+                                                  _c(
+                                                    "v-icon",
+                                                    { attrs: { color: "" } },
+                                                    [
+                                                      _vm._v(
+                                                        "\n\t\t\t\t        \t    \t\t\tdirections_car\n\t\t\t\t        \t    \t\t"
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(
+                                                    "\n\t\t\t\t        \t    \t\t" +
+                                                      _vm._s(
+                                                        service.geoDuration.text
+                                                      ) +
+                                                      "\n\t\t\t\t        \t    \t"
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c("v-divider", { attrs: { inset: "" } })
+                                    ],
+                                    1
+                                  )
+                                })
+                              ),
+                              _vm._v(" "),
+                              _vm.servicesLength
                                 ? _c(
-                                    "v-list-tile-avatar",
+                                    "v-list",
                                     {
-                                      staticClass: "mt-1",
-                                      attrs: { tile: true }
+                                      staticClass: "endofcontent",
+                                      attrs: { dense: "" }
                                     },
                                     [
-                                      _c("img", {
-                                        attrs: { src: "redcross.png" }
-                                      })
-                                    ]
+                                      _c(
+                                        "v-list-tile",
+                                        [
+                                          _c("v-list-tile-content", [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t\t\tSiste Oppføring\n\t\t\t\t\t\t\t"
+                                            )
+                                          ])
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
                                   )
                                 : _vm._e(),
                               _vm._v(" "),
-                              _c(
-                                "v-list-tile-content",
-                                [
-                                  _c("v-list-tile-title", {}, [
-                                    _vm._v(
-                                      _vm._s(index + 1) +
-                                        ". " +
-                                        _vm._s(service.DisplayName)
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-list-tile-sub-title",
-                                    {},
+                              !_vm.servicesLength
+                                ? _c(
+                                    "v-list",
+                                    { staticClass: "endofcontent" },
                                     [
-                                      _c("v-icon", { attrs: { color: "" } }, [
-                                        _vm._v("place")
-                                      ]),
-                                      _vm._v(
-                                        "\n\t\t        \t        \t" +
-                                          _vm._s(service.geoAddress) +
-                                          "\n\t\t        \t        "
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-list-tile-sub-title",
-                                    {},
-                                    [
-                                      _c("v-icon", { attrs: { color: "" } }, [
-                                        _vm._v("phone")
-                                      ]),
-                                      _vm._v(
-                                        "\n\t\t        \t    \t\t" +
-                                          _vm._s(service.Phone) +
-                                          "\n\t\t        \t        "
+                                      _c(
+                                        "v-list-tile",
+                                        [
+                                          _c("v-list-tile-content", [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t\t\t" +
+                                                _vm._s(_vm.emptyText) +
+                                                "\n\t\t\t\t\t\t\t"
+                                            )
+                                          ])
+                                        ],
+                                        1
                                       )
                                     ],
                                     1
                                   )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-tile-action",
-                                [
-                                  _c("v-list-tile-action-text", [
-                                    _vm._v(
-                                      "\n\t\t        \t    \t\t" +
-                                        _vm._s(service.geoDistance.text) +
-                                        "\n\t\t        \t    \t"
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-list-tile-action-text",
-                                    [
-                                      _c("v-icon", { attrs: { color: "" } }, [
-                                        _vm._v(
-                                          "\n\t\t        \t    \t\t\tdirections_car\n\t\t        \t    \t\t"
-                                        )
-                                      ]),
-                                      _vm._v(
-                                        "\n\t\t        \t    \t\t" +
-                                          _vm._s(service.geoDuration.text) +
-                                          "\n\t\t        \t    \t"
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("v-divider", { attrs: { inset: "" } })
-                        ],
-                        1
-                      )
-                    })
-                  ),
-                  _vm._v(" "),
-                  _vm.servicesLength
-                    ? _c(
-                        "v-list",
-                        { staticClass: "endofcontent", attrs: { dense: "" } },
-                        [
-                          _c(
-                            "v-list-tile",
-                            [
-                              _c("v-list-tile-content", [
-                                _vm._v(
-                                  "\n\t\t\t\t\t\tSiste Oppføring\n\t\t\t\t\t"
-                                )
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  !_vm.servicesLength
-                    ? _c(
-                        "v-list",
-                        { staticClass: "endofcontent" },
-                        [
-                          _c(
-                            "v-list-tile",
-                            [
-                              _c("v-list-tile-content", [
-                                _vm._v(
-                                  "\n\t\t\t\t\t\t" +
-                                    _vm._s(_vm.emptyText) +
-                                    "\n\t\t\t\t\t"
-                                )
-                              ])
+                                : _vm._e()
                             ],
                             1
                           )
@@ -57809,57 +57860,60 @@ var render = function() {
               )
             ],
             1
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.loadState === 3
-        ? _c(
-            "v-layout",
-            { staticClass: "my-3" },
-            [
-              _c(
-                "v-flex",
-                { attrs: { xs12: "" } },
+          ),
+          _vm._v(" "),
+          _vm.loadState === 3
+            ? _c(
+                "v-layout",
+                { staticClass: "my-3" },
                 [
                   _c(
-                    "v-alert",
-                    {
-                      staticClass: "mx-1",
-                      attrs: { value: true, type: "error" }
-                    },
+                    "v-flex",
+                    { attrs: { xs12: "" } },
                     [
-                      _vm._v(
-                        "\n\t\t\t\tBeklager, men det har skjedd en feil under innlastingen.\n\t\t\t"
+                      _c(
+                        "v-alert",
+                        {
+                          staticClass: "mx-1",
+                          attrs: { value: true, type: "error" }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\tBeklager, men det har skjedd en feil under innlastingen.\n\t\t\t"
+                          )
+                        ]
                       )
-                    ]
+                    ],
+                    1
                   )
                 ],
                 1
               )
-            ],
-            1
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "v-layout",
-        [
+            : _vm._e(),
+          _vm._v(" "),
           _c(
-            "v-flex",
-            { attrs: { xs12: "", "text-xs-center": "" } },
+            "v-layout",
+            { attrs: { "justify-center": "" } },
             [
               _c(
-                "v-btn",
-                {
-                  attrs: {
-                    color: "info",
-                    large: "",
-                    block: "",
-                    router: "",
-                    to: "/"
-                  }
-                },
-                [_vm._v("\n\t\t\t\tNytt Søk\n\t\t\t")]
+                "v-flex",
+                { attrs: { xs12: "", lg8: "", "text-xs-center": "" } },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        color: "info",
+                        large: "",
+                        block: "",
+                        router: "",
+                        to: "/"
+                      }
+                    },
+                    [_vm._v("\n\t\t\t\tNytt Søk\n\t\t\t")]
+                  )
+                ],
+                1
               )
             ],
             1
@@ -57868,7 +57922,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.showDirections
+      _vm.showDirectionModal
         ? _c("Directions", {
             attrs: {
               origin: { latitude: _vm.latitude, longitude: _vm.longitude },
@@ -57876,7 +57930,7 @@ var render = function() {
             },
             on: {
               close: function($event) {
-                _vm.showDirections = false
+                _vm.showDirectionModal = false
               }
             }
           })
@@ -58157,7 +58211,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.my-subtitle[data-v-569e311d]{\n\tfont-size: 1.2em;\n\tfont-weight: 400;\n}\n", ""]);
 
 // exports
 
@@ -58172,6 +58226,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Modal_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_GoogleMap_vue__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_GoogleMap_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_GoogleMap_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -58220,18 +58285,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	data: function data() {
-		return {
-			showModal: true
-		};
+		return {};
 	},
 
+	computed: {
+		breakpoint: function breakpoint() {
+			return this.$vuetify.breakpoint;
+		}
+	},
 	methods: {
-		getCoordinates: function getCoordinates() {},
-		getAddress: function getAddress() {},
+		calculateAndDisplayRoute: function calculateAndDisplayRoute() {
+			var self = this;
+
+			this.$directionsService.route({
+				origin: { lat: this.origin.latitude, lng: this.origin.longitude },
+				destination: { lat: this.service.Latitude, lng: this.service.Longitude },
+				travelMode: 'DRIVING'
+			}, function (response, status) {
+				if (status === 'OK') {
+					self.$directionsDisplay.setDirections(response);
+				} else {
+					window.alert('Directions request failed due to ' + status);
+				}
+			});
+		},
 		goBack: function goBack() {
-			this.showModal = false;
 			this.$emit('close');
 		}
+	},
+	mounted: function mounted() {
+		this.$directionsService = new google.maps.DirectionsService();
+		this.$directionsDisplay = new google.maps.DirectionsRenderer();
+
+		// Create map object
+		this.$map = new google.maps.Map(document.getElementById('map'), {
+			center: {
+				lat: this.origin.latitude,
+				lng: this.origin.longitude
+			},
+			zoom: 7
+		});
+		this.$directionsDisplay.setMap(this.$map);
+		this.calculateAndDisplayRoute();
 	}
 });
 
@@ -58252,15 +58347,22 @@ var render = function() {
     [
       _c(
         "v-container",
-        { staticClass: "mt-5" },
+        { staticClass: "ma-0 pa-0" },
         [
           _c(
             "v-layout",
+            {},
             [
-              _c("v-flex", { attrs: { xs12: "", "text-xs-center": "" } }, [
-                _c("span", { staticClass: "display-2" }, [
-                  _vm._v("Veibeskrivelse")
-                ])
+              _c("v-flex", { attrs: { xs12: "" } }, [
+                _c("div", {
+                  staticStyle: {
+                    width: "100%",
+                    height: "600px",
+                    margin: "0 auto",
+                    background: "gray"
+                  },
+                  attrs: { id: "map" }
+                })
               ])
             ],
             1
@@ -58268,26 +58370,90 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-layout",
-            { staticClass: "my-3" },
+            {},
             [
               _c(
                 "v-flex",
                 { attrs: { xs12: "" } },
                 [
-                  _c("GoogleMap", {
-                    attrs: { editMarker: false },
-                    on: {
-                      selected: _vm.getCoordinates,
-                      addressLookup: _vm.getAddress
-                    }
-                  })
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-card-text",
+                        [
+                          _c(
+                            "v-layout",
+                            { attrs: { wrap: "" } },
+                            [
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "", sm6: "" } },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    { attrs: { color: "red darken-1" } },
+                                    [_vm._v("place")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "my-subtitle" }, [
+                                    _vm._v(
+                                      _vm._s(_vm.service.DisplayName) + " "
+                                    )
+                                  ])
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs6: "", sm3: "" } },
+                                [
+                                  _c("v-icon", { attrs: { color: "black" } }, [
+                                    _vm._v("arrow_right_alt")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("span", {}, [
+                                    _vm._v(_vm._s(_vm.service.geoDistance.text))
+                                  ])
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs6: "", sm3: "" } },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "mr-0 pr-0",
+                                      attrs: { color: "black" }
+                                    },
+                                    [_vm._v("directions_car")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", {}, [
+                                    _vm._v(_vm._s(_vm.service.geoDuration.text))
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               )
             ],
             1
-          ),
-          _vm._v("\n\n\t\t" + _vm._s(_vm.service.Name) + "\n\n\t")
+          )
         ],
         1
       )
@@ -58596,14 +58762,7 @@ var render = function() {
               _c(
                 "v-layout",
                 { attrs: { "justify-center": "" } },
-                [
-                  _c(
-                    "v-flex",
-                    { attrs: { xs12: "", sm10: "", md8: "", lg6: "" } },
-                    [_vm._t("default")],
-                    2
-                  )
-                ],
+                [_c("v-flex", { attrs: { xs12: "" } }, [_vm._t("default")], 2)],
                 1
               )
             ],

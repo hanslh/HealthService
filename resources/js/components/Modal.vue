@@ -33,7 +33,7 @@
 				:style="viewPortHeightString">
 				<v-layout
 					justify-center>
-					<v-flex xs12 sm10 md8 lg6>
+					<v-flex xs12>
 						<slot>
 						</slot>
 					</v-flex>

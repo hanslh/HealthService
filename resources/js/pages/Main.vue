@@ -12,8 +12,8 @@
 			</v-flex>
 		</v-layout>
 
-		<v-layout class="my-3">
-			<v-flex xs12>
+		<v-layout justify-center class="my-3">
+			<v-flex xs12 lg8>
 				<GoogleMap
 					:editMarker="true"
 					@selected="getCoordinates"
@@ -29,7 +29,7 @@
 		</v-layout>
 
 		<v-layout justify-center>
-			<v-flex xs8>
+			<v-flex xs12 lg8>
 				<v-card v-if="positionSet">
 					<v-card-text>
 						<v-layout class="mb-3">

@@ -1,5 +1,5 @@
 <template>
-	<div id="map" style="width: 800px; height: 600px; margin: 0 auto; background: gray;"></div>
+	<div id="map" style="width: 100%; height: 600px; margin: 0 auto; background: gray;"></div>
 </template>
 
 <script>
@@ -117,15 +117,14 @@
                  self.mousePosition.longitude = event.latLng.lng();
              });
 	
-			this.$bounds = new google.maps.LatLngBounds;
-	
+			
 	      	this.$geocoder = new google.maps.Geocoder;
-	
-	      	this.$distanceService = new google.maps.DistanceMatrixService;
 		}
 	}
 </script>
 
 <style scoped>
-
+	#map :hover{
+		cursor: pointer
+	}
 </style>

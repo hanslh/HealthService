@@ -1,14 +1,15 @@
 <template>
+	<div>
 	<v-container>
 		<v-layout class="my-3">
 			<v-flex xs12 text-xs-center>
-				<span class="display-2">Helsetjenester i Nærheten</span>
+				<span class="display-2">Dine Nærmeste Helsetjenester</span>
 			</v-flex>
 		</v-layout>
 
 		<v-layout class="my-3">
 			<v-flex xs12 text-xs-center>
-				<span class="">Velg helsetjeneste for detaljert veibeskrivelse</span>
+				<span class="">Trykk på helsetjeneste for detaljert veibeskrivelse</span>
 			</v-flex>
 		</v-layout>
 
@@ -28,70 +29,76 @@
 				<span class="">Laster helsetjenester i nærheten...</span>
 			</v-flex>
 		</v-layout>
-
-		<v-card v-if="loadState === 2">
-			<v-card-text class="pa-0">
-				<v-list dense three-line class="ma-0 pa-0">
-			        <div v-for="(service, index) in sortedServices" :key="service.OrganizationNumber">
-	
-			            <v-list-tile @click="serviceSelected(index)">
-	
-			        	    <v-list-tile-avatar
-			        	    	v-if="!smallScreen"
-	                            class="mt-1"
-	                            :tile="true">
-			        	        <img src="redcross.png"/>
-			        	    </v-list-tile-avatar>
-			        	    
-			        	    <v-list-tile-content>
-			        	        <v-list-tile-title class="">{{index + 1}}. {{ service.DisplayName }}</v-list-tile-title>
-			        	        <v-list-tile-sub-title class="">
-			        	        	<v-icon color="">place</v-icon>
-			        	        	{{ service.geoAddress }}
-			        	        </v-list-tile-sub-title>
-			        	        <v-list-tile-sub-title class="">
-			        	        	<v-icon color="">phone</v-icon>
-			        	    		{{ service.Phone }}
-			        	        </v-list-tile-sub-title>
-			        	    </v-list-tile-content>
-			        	    
-			        	    <v-list-tile-action>
-			        	    	<v-list-tile-action-text>
-			        	    		{{ service.geoDistance.text }}
-			        	    	</v-list-tile-action-text>
-			        	    	<v-list-tile-action-text>
-			        	    		<v-icon color="">
-			        	    			directions_car
-			        	    		</v-icon>
-			        	    		{{ service.geoDuration.text }}
-			        	    	</v-list-tile-action-text>
-			        	    </v-list-tile-action>
-	
-			            </v-list-tile>
-	
-			            <v-divider inset></v-divider>
-	
-			        </div>
-			    </v-list>
-			    
-			    <v-list dense v-if="servicesLength" class="endofcontent">
-			    	 <v-list-tile>
-						<v-list-tile-content>
-							Siste Oppføring
-						</v-list-tile-content>
-					</v-list-tile>
-			    </v-list>
-	
-			    <v-list v-if="!servicesLength" class="endofcontent">
-			    	 <v-list-tile>
-						<v-list-tile-content>
-							{{ emptyText }}
-						</v-list-tile-content>
-					</v-list-tile>
-			    </v-list>
-	
-			</v-card-text>
-		</v-card>
+		
+		<v-layout justify-center>
+			<v-flex xs12 lg8>
+				<v-card v-if="loadState === 2">
+					<v-card-text class="pa-0">
+						<v-list dense three-line class="ma-0 pa-0">
+					        <div v-for="(service, index) in services" :key="service.OrganizationNumber">
+			
+					            <v-list-tile @click="serviceSelected(index)">
+			
+					        	    <v-list-tile-avatar
+					        	    	v-if="!smallScreen"
+			                            class="mt-1"
+			                            :tile="true">
+					        	        <img src="redcross.png"/>
+					        	    </v-list-tile-avatar>
+					        	    
+					        	    <v-list-tile-content>
+					        	        <v-list-tile-title class="">
+					        	        	{{index + 1}}. {{ service.DisplayName }}
+					        	        </v-list-tile-title>
+					        	        <v-list-tile-sub-title class="">
+					        	        	<v-icon color="">place</v-icon>
+					        	        	{{ service.geoAddress }}
+					        	        </v-list-tile-sub-title>
+					        	        <v-list-tile-sub-title class="">
+					        	        	<v-icon color="">phone</v-icon>
+					        	    		{{ service.Phone }}
+					        	        </v-list-tile-sub-title>
+					        	    </v-list-tile-content>
+					        	    
+					        	    <v-list-tile-action>
+					        	    	<v-list-tile-action-text>
+					        	    		{{ service.geoDistance.text }}
+					        	    	</v-list-tile-action-text>
+					        	    	<v-list-tile-action-text>
+					        	    		<v-icon color="">
+					        	    			directions_car
+					        	    		</v-icon>
+					        	    		{{ service.geoDuration.text }}
+					        	    	</v-list-tile-action-text>
+					        	    </v-list-tile-action>
+			
+					            </v-list-tile>
+			
+					            <v-divider inset></v-divider>
+			
+					        </div>
+					    </v-list>
+					    
+					    <v-list dense v-if="servicesLength" class="endofcontent">
+					    	 <v-list-tile>
+								<v-list-tile-content>
+									Siste Oppføring
+								</v-list-tile-content>
+							</v-list-tile>
+					    </v-list>
+			
+					    <v-list v-if="!servicesLength" class="endofcontent">
+					    	 <v-list-tile>
+								<v-list-tile-content>
+									{{ emptyText }}
+								</v-list-tile-content>
+							</v-list-tile>
+					    </v-list>
+			
+					</v-card-text>
+				</v-card>
+			</v-flex>
+		</v-layout>
 
 		<v-layout v-if="loadState === 3" class="my-3">
 			<v-flex xs12>
@@ -104,8 +111,8 @@
 			</v-flex>
 		</v-layout>
 
-		<v-layout>
-			<v-flex xs12 text-xs-center>
+		<v-layout justify-center>
+			<v-flex xs12 lg8 text-xs-center>
 				<v-btn 
 					color="info"
 					large
@@ -117,14 +124,17 @@
 			</v-flex>
 		</v-layout>
 
-		<Directions
-			v-if="showDirections"
-			:origin="{ latitude: latitude, longitude: longitude }"
-			:service="selectedService"
-			@close="showDirections = false">
-		</Directions>
-
 	</v-container>
+
+	<Directions
+		v-if="showDirectionModal"
+		:origin="{ latitude: latitude, longitude: longitude }"
+		:service="selectedService"
+		@close="showDirectionModal = false">
+	</Directions>
+
+	</div>
+
 </template>
 
 <script>
@@ -149,7 +159,7 @@
 				latitude: 59.931,
 				longitude: 10.318,
 				emptyText: 'Listen er tom',
-				showDirections: false,
+				showDirectionModal: false,
 				selectedService: null,
 				distances: null
 			}
@@ -163,7 +173,7 @@
 			serviceSelected(index){
 
 				this.selectedService = this.services[index];
-				this.showDirections = true;
+				this.showDirectionModal = true;
 
 				console.log(index);
 				/*
@@ -182,11 +192,9 @@
 
 				axios.get('http://data.helsenorge.no/healthservices?$top=' + this.length + '&latitude=' + this.latitude + '&longitude=' + this.longitude)
 					.then(response => {
-						console.log(response.data);
 						// Loading successful
-						this.loadState = 2;
-						this.services = response.data;
-							
+						this.services = response.data;							
+						// Calculate travel distances
 						this.calculateDistances();
 
 					})
@@ -208,9 +216,6 @@
 					});
 				}
 
-				console.log(destinationArray);
-
-
 				// Calculate distances with a single origin and multiple destinations
 		    	this.$distanceService.getDistanceMatrix({
 	        		origins: [{lat: self.latitude, lng: self.longitude}],
@@ -225,8 +230,6 @@
 			        	alert('Error was: ' + status);
 			        } else {
 
-			        	console.log(response);
-
 			        	// Add calculated distances and resolved addresses to existing service array
 			        	for(var i = 0; i < self.services.length; i++){
 			        		self.services[i].geoAddress = response.destinationAddresses[i];
@@ -234,15 +237,24 @@
 			        		self.services[i].geoDuration = response.rows[0].elements[i].duration;
 			        	}
 
-			        	self.sortedServices = self.services;
+			        	self.sortServices();
 
 			        	console.log(self.services);
 
 			        }
 			    });
 			},
-			sortArray(){
+			sortServices(){
+				// Sort by duration
+				this.services.sort( function(a, b){
+					return ( 
+						( a.geoDuration.value === b.geoDuration.value) ? 0 : 
+						( ( a.geoDuration.value > b.geoDuration.value) ? 1 : -1) 
+					);
+				});
 
+				// End of promise chain. Set loading OK
+				this.loadState = 2;
 			},
 			addressLookup(latitude, longitude){
 				var self = this;

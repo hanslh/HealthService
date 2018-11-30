@@ -3,25 +3,36 @@
 		:show="true"
 	    title="Veibeskrivelse"
 	    @close="goBack">
-		<v-container class="mt-5">
-			<v-layout>
-				<v-flex xs12 text-xs-center>
-					<span class="display-2">Veibeskrivelse</span>
-				</v-flex>
-			</v-layout>
+		<v-container class="ma-0 pa-0">
 	
-			<v-layout class="my-3">
+			<v-layout class="">
 				<v-flex xs12>
-					<GoogleMap
-						:editMarker="false"
-						@selected="getCoordinates"
-						@addressLookup="getAddress">
-					</GoogleMap>
+					<div id="map" style="width: 100%; height: 600px; margin: 0 auto; background: gray;"></div>
 				</v-flex>
 			</v-layout>
 
-			{{ service.Name }}
-	
+			<v-layout class="">
+				<v-flex xs12>
+					<v-card>
+						<v-card-text>
+							<v-layout wrap>
+								<v-flex xs12 sm6>
+									<v-icon color="red darken-1">place</v-icon>
+									<span class="my-subtitle">{{ service.DisplayName }} </span>
+								</v-flex>
+								<v-flex xs6 sm3>
+									<v-icon color="black">arrow_right_alt</v-icon>
+									<span class="">{{ service.geoDistance.text }}</span>
+								</v-flex>
+								<v-flex xs6 sm3>
+									<v-icon color="black" class="mr-0 pr-0">directions_car</v-icon>
+									<span class="">{{ service.geoDuration.text }}</span>
+								</v-flex>
+							</v-layout>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+			</v-layout>
 		</v-container>
 	</Modal>
 </template>
@@ -47,24 +58,55 @@
 		},
 		data(){
 			return{
-				showModal: true
+
+			}
+		},
+		computed:{
+			breakpoint(){
+				return this.$vuetify.breakpoint;
 			}
 		},
 		methods:{
-			getCoordinates(){
+			calculateAndDisplayRoute() {
+				var self = this;
 
-			},
-			getAddress(){
-
-			},
+        		this.$directionsService.route({
+        			origin: { lat: this.origin.latitude, lng: this.origin.longitude },
+        			destination: { lat: this.service.Latitude, lng: this.service.Longitude },
+        			travelMode: 'DRIVING'
+        		}, function(response, status) {
+        		  	if (status === 'OK') {
+        		    	self.$directionsDisplay.setDirections(response);
+        			} else {
+        				window.alert('Directions request failed due to ' + status);
+        			}
+        		});
+      		},
 			goBack(){
-				this.showModal = false;
 				this.$emit('close');
 			}
+		},
+		mounted(){
+			this.$directionsService = new google.maps.DirectionsService;
+			this.$directionsDisplay = new google.maps.DirectionsRenderer;
+
+			// Create map object
+			this.$map = new google.maps.Map(document.getElementById('map'), {
+	        	center: {
+	        		lat: this.origin.latitude, 
+	        		lng: this.origin.longitude
+	        	},
+	        	zoom: 7
+	      	});
+	      	this.$directionsDisplay.setMap(this.$map);
+			this.calculateAndDisplayRoute();
 		}
 	}
 </script>
 
 <style scoped>
-
+	.my-subtitle{
+		font-size: 1.2em;
+		font-weight: 400;
+	}
 </style>
