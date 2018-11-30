@@ -57355,7 +57355,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n.endofcontent[data-v-1673c33e] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n}\n", ""]);
+exports.push([module.i, "\n.my-subtitle[data-v-1673c33e] {\n\tfont-size: 1.0em;\n\tfont-weight: bold;\n}\n.endofcontent[data-v-1673c33e] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n}\n", ""]);
 
 // exports
 
@@ -57837,17 +57837,21 @@ var render = function() {
                                           _c(
                                             "v-list-tile-content",
                                             [
-                                              _c("v-list-tile-title", {}, [
-                                                _vm._v(
-                                                  "\n\t\t\t\t        \t        \t" +
-                                                    _vm._s(index + 1) +
-                                                    ". " +
-                                                    _vm._s(
-                                                      service.DisplayName
-                                                    ) +
-                                                    "\n\t\t\t\t        \t        "
-                                                )
-                                              ]),
+                                              _c(
+                                                "v-list-tile-title",
+                                                { staticClass: "my-subtitle" },
+                                                [
+                                                  _vm._v(
+                                                    "\n\t\t\t\t        \t        \t" +
+                                                      _vm._s(index + 1) +
+                                                      ". " +
+                                                      _vm._s(
+                                                        service.DisplayName
+                                                      ) +
+                                                      "\n\t\t\t\t        \t        "
+                                                  )
+                                                ]
+                                              ),
                                               _vm._v(" "),
                                               _c(
                                                 "v-list-tile-sub-title",

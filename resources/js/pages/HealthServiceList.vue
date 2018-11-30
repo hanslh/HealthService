@@ -59,7 +59,7 @@
 					        	    </v-list-tile-avatar>
 					        	    
 					        	    <v-list-tile-content>
-					        	        <v-list-tile-title class="">
+					        	        <v-list-tile-title class="my-subtitle">
 					        	        	{{index + 1}}. {{ service.DisplayName }}
 					        	        </v-list-tile-title>
 					        	        <v-list-tile-sub-title class="">
@@ -297,6 +297,10 @@
 </script>
 
 <style scoped>
+	.my-subtitle {
+		font-size: 1.0em;
+		font-weight: bold;
+	}
 	.endofcontent {
 		display: flex;
 		justify-content: center;
